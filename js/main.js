@@ -17,7 +17,7 @@ var connection = function() {
       navigator.bluetooth.requestDevice({ 
         filters: [
           { name: deviceName },
-          // { services: ['0000ffe0-0000-1000-8000-00805f9b34fb'] },
+          { optionalServices: ['0000ffe0-0000-1000-8000-00805f9b34fb'] },
         ] 
       })
       .then(device => {
