@@ -44,9 +44,9 @@ var connection = function() {
         log('All characteristics');
         console.log(characteristics);
         // Getting Battery Level Characteristic...
-        return gattService.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
+        // return gattService.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
+        return characteristics[0].startNotifications()
       })
-      .then(characteristic => characteristic.startNotifications())
       .then(characteristic => {
         log('Sending information');
         // Reading Battery Level...
