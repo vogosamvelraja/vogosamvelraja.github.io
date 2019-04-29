@@ -35,9 +35,16 @@ var connection = function() {
         return server.getPrimaryService('0000ffe0-0000-1000-8000-00805f9b34fb');
       })
       .then(service => {
+        gattService = service;
         log('Getting characteristic');
         // Getting Battery Level Characteristic...
-        return service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
+        return service.getCharacteristics();
+      })
+      .then(characteristics => {
+        log('All characteristics');
+        console.log(characteristics);
+        // Getting Battery Level Characteristic...
+        return gattService.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
       })
       .then(characteristic => characteristic.startNotifications())
       .then(characteristic => {
