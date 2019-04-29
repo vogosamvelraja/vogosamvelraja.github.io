@@ -14,10 +14,12 @@ var connection = function() {
       disconnectLog('');
       exceptionLog('');
       log('Connecting to device ' + deviceName);
-      navigator.bluetooth.requestDevice({ filters: [
-        { name: deviceName },
-        { services: ['0000ffe0-0000-1000-8000-00805f9b34fb'] },
-        ] })
+      navigator.bluetooth.requestDevice({ 
+        filters: [
+          { name: deviceName },
+          // { services: ['0000ffe0-0000-1000-8000-00805f9b34fb'] },
+        ] 
+      })
       .then(device => {
         log('Connecting to gatt server');
         bluetoothDevice = device;
